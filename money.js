@@ -67,12 +67,23 @@ var appData = {
             }
         }
     },
-    chooseIncome: function (){
-        let items = prompt("Что принесёт дополнительный доход?(Перечислите через запятую)", '' );
-        appData.income = items.split(', ');
-        appData.income.push(prompt("Что то ещё?", '' ));
-        appData.income.sort();
-        
-    }
+    chooseIncome: function () {
+        for (i = 0; i < 1; i++) {
+            let items = prompt("Что принесёт дополнительный доход?(Перечислите через запятую)", '');
 
+            if (typeof (items) != 'string' || items == "" || items == null) {
+                i--
+            }else{
+                appData.income = items.split(',');
+                appData.income.push(prompt("Что то ещё?", ''));
+                appData.income.sort();
+            }
+        }
+        appData.income.forEach(function(item, i){
+            alert("Способы доп. заработка: " + i + ": " + item);
+        })
+        for(let key in appData){
+            console.log('Наша программа включает в себя данные: ' + key);
+            }
+        }     
 }
